@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>Spring</display-name>
+	<!-- 使用ContextLoaderListener配置时，需要告诉它Spring配置文件位置 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+	<!-- SpringMVC的前端控制器 -->
+	<!-- 当DispatcherServlet载入后，它将从一个XML文件中载入Spring的应用上下文，该XML文件的名字取决去<servlet-name> -->
+	<!-- 这里DispatcherServlet将试图从一个叫做Springmvc-servlet.xml的文件中载入应用上下文，其默认位于WEB-INF目录下 -->
+	<servlet>
+		<servlet-name>Springmvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 查找唯一的(加载指定)handlerMapping -->
+		<init-param>
+			<param-name>detectAllHandlerMappings</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<!-- 查找唯一的(加载指定)handlerAdapter -->
+		<init-param>
+			<param-name>detectAllHandlerAdapters</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Springmvc</servlet-name>
+		<url-pattern>*.htm</url-pattern>
+	</servlet-mapping>
+	<!-- 自定义servlet -->
+	<!-- <servlet> <servlet-name>myservlet</servlet-name> <servlet-class>springmvc.MyServlet</servlet-class> 
+		<load-on-startup>1</load-on-startup> </servlet> <servlet-mapping> <servlet-name>myservlet</servlet-name> 
+		<url-pattern>*.htm</url-pattern> </servlet-mapping> -->
+	<!-- 配置上下文载入器 -->
+	<!-- 上下文载入器载入除DispatcherServlet载入的配置文件之外的其他上下文配置文件 -->
+	<!-- 最常用的上下文载入器是一个Servlet监听器，其名称为ContextLoaderListener -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- 自定义监听器 -->
+	<listener>
+		<listener-class>springmvc.MyDataContextListener</listener-class>
+	</listener>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

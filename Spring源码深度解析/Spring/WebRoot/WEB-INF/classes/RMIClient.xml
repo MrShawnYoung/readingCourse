@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- 客户端 -->
+	<bean id="myClient" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<!-- rmi不能大写，否则报错 -->
+		<property name="serviceUrl" value="rmi://127.0.0.1:9999/helloRMI" />
+		<property name="serviceInterface" value="rmi.HelloRMIService" />
+	</bean>
+</beans>

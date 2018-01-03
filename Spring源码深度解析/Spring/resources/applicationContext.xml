@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<!-- <bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		该属性用来配置可上传文件的最大byte数
+		<property name="maxUploadSize">
+			<value>100000</value>
+		</property>
+	</bean> -->
+	<!-- URL参数国际化配置 -->
+	<bean id="headerLocaleResolver"
+		class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver" />
+	<!-- session的国际化配置 -->
+	<bean id="sessionLocaleResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+	<!-- cookie国际化配置 -->
+	<bean id="cookieLocaleResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
+	<!-- 主题资源 -->
+	<bean id="themeSource"
+		class="org.springframework.ui.context.support.ResourceBundleThemeSource">
+		<property name="basenamePrefix" value="springmvc"></property>
+	</bean>
+	<!-- 固定主题 -->
+	<bean id="fixedThemeResolver"
+		class="org.springframework.web.servlet.theme.FixedThemeResolver">
+		<property name="defaultThemeName" value="summer" />
+	</bean>
+	<!-- 用户所选主题 -->
+	<bean id="cookieThemeResolver"
+		class="org.springframework.web.servlet.theme.CookieThemeResolver">
+		<property name="defaultThemeName" value="summer" />
+	</bean>
+	<!-- session主题 -->
+	<bean id="sessionThemeResolver"
+		class="org.springframework.web.servlet.theme.SessionThemeResolver">
+		<property name="defaultThemeName" value="summer" />
+	</bean>
+	<!-- 拦截器主题 -->
+	<bean id="themeChangeInterceptor"
+		class="org.springframework.web.servlet.theme.ThemeChangeInterceptor">
+		<property name="paramName" value="themeName" />
+	</bean>
+	<bean id="exceptionHandler" class="springmvc.ExceptionHandler" />
+	<!-- Spring缓存 -->
+	<bean name="/helloLastModified" class="springmvc.HelloWorldLastModifiedCacheController" />
+</beans>
