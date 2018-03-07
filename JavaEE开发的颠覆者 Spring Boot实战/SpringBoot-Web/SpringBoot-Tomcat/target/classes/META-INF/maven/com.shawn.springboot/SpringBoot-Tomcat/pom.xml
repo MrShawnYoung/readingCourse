@@ -1,0 +1,17 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.shawn.springboot</groupId>
+		<artifactId>SpringBoot-Web</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>SpringBoot-Tomcat</artifactId>
+	<!-- 替换服务器 -->
+	<!-- <dependencies> <dependency> <groupId>org.springframework.boot</groupId> 
+		<artifactId>spring-boot-starter-web</artifactId> 排除Tomcat <exclusions> <exclusion> 
+		<groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-tomcat</artifactId> 
+		</exclusion> </exclusions> </dependency> 使用其他服务器 <dependency> <groupId>org.springframework.boot</groupId> 
+		<artifactId>spring-boot-starter-jetty</artifactId> <artifactId>spring-boot-starter-undertow</artifactId> 
+		</dependency> </dependencies> -->
+</project>
