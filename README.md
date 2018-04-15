@@ -9,3 +9,5 @@ Spring源码深度解析：书中版本和项目中版本不一致，不影响�
 实战Java高并发程序设计：两个项目JDK版本不一样，请自行下载JDK版本切换，Concurrency会关联Akka项目。
 
 JavaEE开发的颠覆者 Spring Boot实战：数据库部分请自行更改配置，Spring Cloud部分代码有问题，后期我会单独做个完整的实例代码。
+
+Oracle查询优化改写技巧与案例：使用到的表为scott用户下的emp和dept，没表的可以自行导入，文件里回车换行为一段，执行时注意选中就行。
