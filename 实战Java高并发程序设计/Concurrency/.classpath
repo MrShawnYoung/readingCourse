@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_79"/>
-	<classpathentry kind="lib" path="src/disruptor-3.3.7.jar"/>
-	<classpathentry kind="lib" path="src/jmatrices0.6.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Akka"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
