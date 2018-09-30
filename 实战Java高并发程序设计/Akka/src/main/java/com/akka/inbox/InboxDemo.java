@@ -19,12 +19,9 @@ import akka.actor.Terminated;
  * 
  */
 public class InboxDemo {
-
 	public static void main(String[] args) {
-		ActorSystem system = ActorSystem.create("inboxdemo",
-				ConfigFactory.load("samplehello.conf"));
-		ActorRef worker = system
-				.actorOf(Props.create(MyWorker.class), "worker");
+		ActorSystem system = ActorSystem.create("inboxdemo", ConfigFactory.load("samplehello.conf"));
+		ActorRef worker = system.actorOf(Props.create(MyWorker.class), "worker");
 		// 邮箱绑定system
 		Inbox inbox = Inbox.create(system);
 		// 监视worker，并发送消息

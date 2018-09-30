@@ -53,8 +53,7 @@ public class RestartActor extends UntypedActor {
 
 	/* 重启 */
 	@Override
-	public void preRestart(Throwable reason, scala.Option<Object> message)
-			throws Exception {
+	public void preRestart(Throwable reason, scala.Option<Object> message) throws Exception {
 		System.out.println("preRestart hashcode:" + this.hashCode());
 	}
 
@@ -71,19 +70,16 @@ public class RestartActor extends UntypedActor {
 	}
 
 	public static void customStrategy(ActorSystem system) {
-		ActorRef a = system.actorOf(Props.create(Supervisor.class),
-				"Supervisor");
+		ActorRef a = system.actorOf(Props.create(Supervisor.class), "Supervisor");
 		a.tell(Props.create(RestartActor.class), ActorRef.noSender());
-		ActorSelection sel = system
-				.actorSelection("akka://lifecycle/user/Supervisor/restartActor");
+		ActorSelection sel = system.actorSelection("akka://lifecycle/user/Supervisor/restartActor");
 		for (int i = 0; i < 100; i++) {
 			sel.tell(RestartActor.Msg.RESTART, ActorRef.noSender());
 		}
 	}
 
 	public static void main(String[] args) {
-		ActorSystem system = ActorSystem.create("lifecycle",
-				ConfigFactory.load("lifecycle.conf"));
+		ActorSystem system = ActorSystem.create("lifecycle", ConfigFactory.load("lifecycle.conf"));
 		customStrategy(system);
 	}
 }

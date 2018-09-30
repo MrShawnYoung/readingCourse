@@ -11,8 +11,7 @@ import akka.event.LoggingAdapter;
  * 
  */
 public class MyWorker extends UntypedActor {
-	private final LoggingAdapter log = Logging.getLogger(getContext().system(),
-			this);
+	private final LoggingAdapter log = Logging.getLogger(getContext().system(), this);
 
 	public static enum Msg {
 		WORKING, DONE, CLOSE;

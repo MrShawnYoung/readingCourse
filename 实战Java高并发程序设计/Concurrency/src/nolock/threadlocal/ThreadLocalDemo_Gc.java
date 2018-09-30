@@ -38,8 +38,7 @@ public class ThreadLocalDemo_Gc {
 							System.out.println(this.toString() + " is gc");
 						}
 					});
-					System.out.println(Thread.currentThread().getId()
-							+ ":create SimpleDateFormat");
+					System.out.println(Thread.currentThread().getId() + ":create SimpleDateFormat");
 				}
 				Date t = tl.get().parse("2015-03-29 19:29:" + i % 60);
 			} catch (Exception e) {

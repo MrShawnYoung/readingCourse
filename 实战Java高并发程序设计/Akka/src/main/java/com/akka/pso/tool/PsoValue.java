@@ -35,5 +35,4 @@ public final class PsoValue {
 		sb.append("value:").append(value).append("\n").append(x.toString());
 		return sb.toString();
 	}
-
 }

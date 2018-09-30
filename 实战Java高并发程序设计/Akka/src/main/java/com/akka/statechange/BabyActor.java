@@ -12,8 +12,7 @@ import akka.japi.Procedure;
  * 
  */
 public class BabyActor extends UntypedActor {
-	private final LoggingAdapter log = Logging.getLogger(getContext().system(),
-			this);
+	private final LoggingAdapter log = Logging.getLogger(getContext().system(), this);
 
 	public static enum Msg {
 		SLEEP, PLAY, CLOSE;

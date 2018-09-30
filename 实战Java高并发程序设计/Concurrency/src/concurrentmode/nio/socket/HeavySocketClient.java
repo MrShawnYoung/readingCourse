@@ -45,8 +45,7 @@ public class HeavySocketClient {
 				LockSupport.parkNanos(sleep_time);
 				writer.println();
 				writer.flush();
-				reader = new BufferedReader(new InputStreamReader(
-						client.getInputStream()));
+				reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
 				System.out.println("from server: " + reader.readLine());
 			} catch (UnknownHostException e) {
 				e.printStackTrace();

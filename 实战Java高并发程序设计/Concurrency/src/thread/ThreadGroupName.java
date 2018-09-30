@@ -9,8 +9,7 @@ package thread;
 public class ThreadGroupName implements Runnable {
 	@Override
 	public void run() {
-		String name = Thread.currentThread().getThreadGroup().getName() + "-"
-				+ Thread.currentThread().getName();
+		String name = Thread.currentThread().getThreadGroup().getName() + "-" + Thread.currentThread().getName();
 		while (true) {
 			System.out.println("I am " + name);
 			try {

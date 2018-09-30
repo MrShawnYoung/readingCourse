@@ -1,4 +1,4 @@
-package com.java8;
+package java8;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -55,8 +55,7 @@ public class LongAdderDemo {
 				v = out.inc();
 			}
 			long endtime = System.currentTimeMillis();
-			System.out.println("SyncThread spend:" + (endtime - starttime)
-					+ "ms" + " v=" + v);
+			System.out.println("SyncThread spend:" + (endtime - starttime) + "ms" + " v=" + v);
 			cdlsync.countDown();
 		}
 	}
@@ -92,8 +91,7 @@ public class LongAdderDemo {
 				v = acount.incrementAndGet();
 			}
 			long endtime = System.currentTimeMillis();
-			System.out.println("AtomicThread spend:" + (endtime - starttime)
-					+ "ms" + " v=" + v);
+			System.out.println("AtomicThread spend:" + (endtime - starttime) + "ms" + " v=" + v);
 			cdlatomic.countDown();
 		}
 	}
@@ -130,8 +128,7 @@ public class LongAdderDemo {
 				v = lacount.sum();
 			}
 			long endtime = System.currentTimeMillis();
-			System.out.println("LongAddrThread spend:" + (endtime - starttime)
-					+ "ms" + " v=" + v);
+			System.out.println("LongAddrThread spend:" + (endtime - starttime) + "ms" + " v=" + v);
 			cdladdr.countDown();
 		}
 	}

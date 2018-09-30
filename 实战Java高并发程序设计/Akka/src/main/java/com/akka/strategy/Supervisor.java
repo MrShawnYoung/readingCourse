@@ -18,13 +18,11 @@ import akka.japi.Function;
  */
 public class Supervisor extends UntypedActor {
 	// 运行actor遇到错误，1分钟内3次重试，超过直接杀死actor
-	private static SupervisorStrategy strategy = new OneForOneStrategy(3,
-			Duration.create(1, TimeUnit.MINUTES),
+	private static SupervisorStrategy strategy = new OneForOneStrategy(3, Duration.create(1, TimeUnit.MINUTES),
 			new Function<Throwable, Directive>() {
 				public Directive apply(Throwable t) throws Exception {
 					if (t instanceof ArithmeticException) {
-						System.out
-								.println("meet ArithmeticException,just resume");
+						System.out.println("meet ArithmeticException,just resume");
 						// 继续指定这个actor,不做处理
 						return SupervisorStrategy.resume();
 					} else if (t instanceof NullPointerException) {

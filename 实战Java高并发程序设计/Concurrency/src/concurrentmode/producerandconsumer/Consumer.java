@@ -21,8 +21,7 @@ public class Consumer implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("start Consumer id="
-				+ Thread.currentThread().getId());
+		System.out.println("start Consumer id=" + Thread.currentThread().getId());
 		Random r = new Random();
 		try {
 			while (true) {
@@ -31,8 +30,7 @@ public class Consumer implements Runnable {
 				if (null != data) {
 					// 计算平方
 					int re = data.getData() * data.getData();
-					System.out.println(MessageFormat.format("{0}*{1}={2}",
-							data.getData(), data.getData(), re));
+					System.out.println(MessageFormat.format("{0}*{1}={2}", data.getData(), data.getData(), re));
 					Thread.sleep(r.nextInt(SLEEPTIME));
 				}
 			}

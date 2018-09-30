@@ -49,14 +49,12 @@ public class ThreadLocalRnd {
 				getRandom().nextInt();
 			}
 			long e = System.currentTimeMillis();
-			System.out.println(Thread.currentThread().getName() + " spend "
-					+ (e - b) + "ms");
+			System.out.println(Thread.currentThread().getName() + " spend " + (e - b) + "ms");
 			return e - b;
 		}
 	}
 
-	public static void main(String[] args) throws InterruptedException,
-			ExecutionException {
+	public static void main(String[] args) throws InterruptedException, ExecutionException {
 		Future<Long>[] futs = new Future[GEN_COUNT];
 		for (int i = 0; i < THREAD_COUNT; i++) {
 			futs[i] = exe.submit(new RndTask(0));

@@ -24,11 +24,9 @@ public class STMDemo {
 	public static ActorRef employee = null;
 
 	public static void main(String[] args) throws Exception {
-		final ActorSystem system = ActorSystem.create("transactionDemo",
-				ConfigFactory.load("samplehello.conf"));
+		final ActorSystem system = ActorSystem.create("transactionDemo", ConfigFactory.load("samplehello.conf"));
 		company = system.actorOf(Props.create(CompanyActor.class), "company");
-		employee = system
-				.actorOf(Props.create(EmployeeActor.class), "employee");
+		employee = system.actorOf(Props.create(EmployeeActor.class), "employee");
 
 		Timeout timeout = new Timeout(1, TimeUnit.SECONDS);
 		// 尝试19次汇款，每次递增
@@ -37,10 +35,8 @@ public class STMDemo {
 			company.tell(new Coordinated(i, timeout), ActorRef.noSender());
 			Thread.sleep(200);
 			// 询问当前余额
-			Integer companyCount = (Integer) Await.result(
-					ask(company, "GetCount", timeout), timeout.duration());
-			Integer employeeCount = (Integer) Await.result(
-					ask(employee, "GetCount", timeout), timeout.duration());
+			Integer companyCount = (Integer) Await.result(ask(company, "GetCount", timeout), timeout.duration());
+			Integer employeeCount = (Integer) Await.result(ask(employee, "GetCount", timeout), timeout.duration());
 			// 输出
 			System.out.println("company count=" + companyCount);
 			System.out.println("employee count=" + employeeCount);

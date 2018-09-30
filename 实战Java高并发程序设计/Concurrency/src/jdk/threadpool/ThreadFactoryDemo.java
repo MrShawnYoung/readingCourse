@@ -16,8 +16,7 @@ public class ThreadFactoryDemo {
 	public static class MyTask implements Runnable {
 		@Override
 		public void run() {
-			System.out.println(System.currentTimeMillis() + ":Thread ID:"
-					+ Thread.currentThread().getId());
+			System.out.println(System.currentTimeMillis() + ":Thread ID:" + Thread.currentThread().getId());
 			try {
 				Thread.sleep(100);
 			} catch (Exception e) {
@@ -28,8 +27,7 @@ public class ThreadFactoryDemo {
 
 	public static void main(String[] args) throws InterruptedException {
 		MyTask task = new MyTask();
-		ExecutorService es = new ThreadPoolExecutor(5, 5, 0L,
-				TimeUnit.MILLISECONDS, new SynchronousQueue<Runnable>(),
+		ExecutorService es = new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS, new SynchronousQueue<Runnable>(),
 				new ThreadFactory() {
 					@Override
 					public Thread newThread(Runnable r) {

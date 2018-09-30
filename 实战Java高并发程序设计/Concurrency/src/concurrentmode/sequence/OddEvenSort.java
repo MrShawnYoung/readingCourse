@@ -46,8 +46,7 @@ public class OddEvenSort {
 		while (getExchFlag() == 1 || start == 1) {
 			setExchFlag(0);
 			// 偶数的数组长度，当start为1时，只有len/2-1个线程
-			CountDownLatch latch = new CountDownLatch(arr.length / 2
-					- (arr.length % 2 == 0 ? start : 0));
+			CountDownLatch latch = new CountDownLatch(arr.length / 2 - (arr.length % 2 == 0 ? start : 0));
 			for (int i = start; i < arr.length - 1; i += 2) {
 				// pool.submit(new OddEvenSortTask(i, latch));
 			}

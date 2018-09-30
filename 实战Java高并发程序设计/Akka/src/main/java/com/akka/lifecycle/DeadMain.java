@@ -15,10 +15,8 @@ import akka.actor.Props;
  */
 public class DeadMain {
 	public static void main(String[] args) {
-		ActorSystem system = ActorSystem.create("deadwatch",
-				ConfigFactory.load("samplehello.conf"));
-		ActorRef worker = system
-				.actorOf(Props.create(MyWorker.class), "worker");
+		ActorSystem system = ActorSystem.create("deadwatch", ConfigFactory.load("samplehello.conf"));
+		ActorRef worker = system.actorOf(Props.create(MyWorker.class), "worker");
 		// 第二个参数表示监视这个worker,也就是WatchActor的构造函数
 		system.actorOf(Props.create(WatchActor.class, worker), "watcher");
 		worker.tell(MyWorker.Msg.WORKING, ActorRef.noSender());

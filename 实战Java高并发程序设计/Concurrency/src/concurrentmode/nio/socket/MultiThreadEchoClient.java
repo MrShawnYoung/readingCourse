@@ -25,8 +25,7 @@ public class MultiThreadEchoClient {
 			writer = new PrintWriter(client.getOutputStream(), true);
 			writer.println("Hello!");
 			writer.flush();
-			reader = new BufferedReader(new InputStreamReader(
-					client.getInputStream()));
+			reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			System.out.println("from server:" + reader.readLine());
 		} catch (UnknownHostException e) {
 			e.printStackTrace();

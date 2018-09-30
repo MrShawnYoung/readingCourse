@@ -17,8 +17,7 @@ public class RejectThreadPoolDemo {
 	public static class MyTask implements Runnable {
 		@Override
 		public void run() {
-			System.out.println(System.currentTimeMillis() + ":Thread ID:"
-					+ Thread.currentThread().getId());
+			System.out.println(System.currentTimeMillis() + ":Thread ID:" + Thread.currentThread().getId());
 			try {
 				Thread.sleep(100);
 			} catch (Exception e) {
@@ -29,13 +28,11 @@ public class RejectThreadPoolDemo {
 
 	public static void main(String[] args) throws InterruptedException {
 		MyTask task = new MyTask();
-		ExecutorService es = new ThreadPoolExecutor(5, 5, 0L,
-				TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>(10),
-				Executors.defaultThreadFactory(),
+		ExecutorService es = new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
+				new LinkedBlockingDeque<Runnable>(10), Executors.defaultThreadFactory(),
 				new RejectedExecutionHandler() {
 					@Override
-					public void rejectedExecution(Runnable r,
-							ThreadPoolExecutor executor) {
+					public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
 						System.out.println(r.toString() + "is discard");
 					}
 				});

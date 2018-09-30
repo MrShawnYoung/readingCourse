@@ -12,25 +12,24 @@ import akka.event.LoggingAdapter;
 import akka.routing.ActorRefRoutee;
 import akka.routing.RoundRobinRoutingLogic;
 import akka.routing.Routee;
+import akka.routing.Routees;
 import akka.routing.Router;
 
 /**
- * 监视
+ * 监视(报错请切换到JDK7环境)
  * 
  * @author 杨弢
  * 
  */
 public class WatchActor extends UntypedActor {
-	private final LoggingAdapter log = Logging.getLogger(getContext().system(),
-			this);
+	private final LoggingAdapter log = Logging.getLogger(getContext().system(), this);
 	public Router router;
 	{
 		// 被路由的actor
 		List<Routee> routees = new ArrayList<Routee>();
 		for (int i = 0; i < 5; i++) {
 			// Routee路由由5个worker的actor组成
-			ActorRef worker = getContext().actorOf(
-					Props.create(MyWorker.class), "worker_" + i);
+			ActorRef worker = getContext().actorOf(Props.create(MyWorker.class), "worker_" + i);
 			routees.add(new ActorRefRoutee(worker));
 		}
 		// 对所有的路由消息进行发送
@@ -45,8 +44,7 @@ public class WatchActor extends UntypedActor {
 		} else if (msg instanceof Terminated) {
 			// 停止工作就移除
 			router = router.removeRoutee(((Terminated) msg).actor());
-			System.out.println(((Terminated) msg).actor().path()
-					+ " is closed, routee=" + router.routees().size());
+			System.out.println(((Terminated) msg).actor().path() + " is closed, routee=" + router.routees().size());
 			if (router.routees().size() == 0) {
 				// 无可用actor直接关闭系统
 				System.out.println("Close system");

@@ -32,6 +32,5 @@ public class AtomicIntegerDemo {
 			ts[k].join();
 		}
 		System.out.println(i);
-
 	}
 }

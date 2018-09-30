@@ -15,8 +15,7 @@ public class SimpleWN {
 			synchronized (obj) {
 				System.out.println(System.currentTimeMillis() + ":T1 start!");
 				try {
-					System.out.println(System.currentTimeMillis()
-							+ ":T1 wait for object!");
+					System.out.println(System.currentTimeMillis() + ":T1 wait for object!");
 					obj.wait();
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,8 +29,7 @@ public class SimpleWN {
 		@Override
 		public void run() {
 			synchronized (obj) {
-				System.out.println(System.currentTimeMillis()
-						+ ":T2 start! notify one thread");
+				System.out.println(System.currentTimeMillis() + ":T2 start! notify one thread");
 				obj.notify();
 				System.out.println(System.currentTimeMillis() + ":T2 end!");
 				try {

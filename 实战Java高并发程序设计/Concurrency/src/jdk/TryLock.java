@@ -30,8 +30,7 @@ public class TryLock implements Runnable {
 						}
 						if (lock2.tryLock()) {
 							try {
-								System.out.println(Thread.currentThread()
-										.getId() + ":My Job done");
+								System.out.println(Thread.currentThread().getId() + ":My Job done");
 								return;
 							} finally {
 								lock2.unlock();
@@ -53,8 +52,7 @@ public class TryLock implements Runnable {
 						}
 						if (lock1.tryLock()) {
 							try {
-								System.out.println(Thread.currentThread()
-										.getId() + ":My Job done");
+								System.out.println(Thread.currentThread().getId() + ":My Job done");
 								return;
 							} finally {
 								lock1.unlock();

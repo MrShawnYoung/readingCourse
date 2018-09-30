@@ -55,11 +55,9 @@ public class NioServer {
 				if (sk.isAcceptable()) {
 					doAccept(sk);// 如果为接受状态，接受
 				} else if (sk.isValid() && sk.isReadable()) {// 如果是可读
-					if (!time_stat.containsKey(((SocketChannel) sk.channel())
-							.socket())) {
+					if (!time_stat.containsKey(((SocketChannel) sk.channel()).socket())) {
 						// 将socket方法如map
-						time_stat.put(((SocketChannel) sk.channel()).socket(),
-								System.currentTimeMillis());// 增加一个时间戳
+						time_stat.put(((SocketChannel) sk.channel()).socket(), System.currentTimeMillis());// 增加一个时间戳
 						// 读取
 						doRead(sk);
 					}
@@ -67,8 +65,7 @@ public class NioServer {
 					// 写
 					doWrite(sk);
 					e = System.currentTimeMillis();
-					long b = time_stat.remove(((SocketChannel) sk.channel())
-							.socket());
+					long b = time_stat.remove(((SocketChannel) sk.channel()).socket());
 					System.out.println("spend:" + (e - b) + "ms");// 输入处理写入耗时
 				}
 			}
@@ -86,13 +83,11 @@ public class NioServer {
 		try {
 			clientChannel = server.accept();// 生成一个channel表示与客户端通信
 			clientChannel.configureBlocking(false);// 非阻塞模式
-			SelectionKey clientKey = clientChannel.register(selector,
-					SelectionKey.OP_READ);
+			SelectionKey clientKey = clientChannel.register(selector, SelectionKey.OP_READ);
 			EchoClient echoClient = new EchoClient();// 回复给客户端口的全部信息
 			clientKey.attach(echoClient);// 附加实例，整个连接共享实例
 			InetAddress clientAddress = clientChannel.socket().getInetAddress();
-			System.out.println("Accepted connetion from "
-					+ clientAddress.getHostAddress() + ".");
+			System.out.println("Accepted connetion from " + clientAddress.getHostAddress() + ".");
 		} catch (Exception e) {
 			System.out.println("Failed to accept new client.");
 			e.printStackTrace();

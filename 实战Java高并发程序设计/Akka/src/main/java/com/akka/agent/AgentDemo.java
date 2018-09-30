@@ -25,18 +25,15 @@ import akka.dispatch.OnComplete;
  * 
  */
 public class AgentDemo {
-	public static Agent<Integer> counterAgent = Agent.create(0,
-			ExecutionContexts.global());
+	public static Agent<Integer> counterAgent = Agent.create(0, ExecutionContexts.global());
 	static ConcurrentLinkedQueue<Future<Integer>> futures = new ConcurrentLinkedQueue<Future<Integer>>();
 
 	public static void main(String[] args) {
-		final ActorSystem system = ActorSystem.create("agentdemo",
-				ConfigFactory.load("samplehello.conf"));
+		final ActorSystem system = ActorSystem.create("agentdemo", ConfigFactory.load("samplehello.conf"));
 		// 创建CounterActor
 		ActorRef[] counter = new ActorRef[10];
 		for (int i = 0; i < counter.length; i++) {
-			counter[i] = system.actorOf(Props.create(CounterActor.class),
-					"counter" + i);
+			counter[i] = system.actorOf(Props.create(CounterActor.class), "counter" + i);
 		}
 		// 使用Inbox进行通信
 		final Inbox inbox = Inbox.create(system);
@@ -60,14 +57,12 @@ public class AgentDemo {
 			}
 		}
 		// 等待所有的累加线程完成，因为他们都是异步的
-		Futures.sequence(futures, system.dispatcher()).onComplete(
-				new OnComplete<Iterable<Integer>>() {
-					@Override
-					public void onComplete(Throwable arg0,
-							Iterable<Integer> arg1) throws Throwable {
-						System.out.println("counterAgent=" + counterAgent.get());
-						system.shutdown();
-					}
-				}, system.dispatcher());
+		Futures.sequence(futures, system.dispatcher()).onComplete(new OnComplete<Iterable<Integer>>() {
+			@Override
+			public void onComplete(Throwable arg0, Iterable<Integer> arg1) throws Throwable {
+				System.out.println("counterAgent=" + counterAgent.get());
+				system.shutdown();
+			}
+		}, system.dispatcher());
 	}
 }

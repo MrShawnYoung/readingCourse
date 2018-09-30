@@ -32,8 +32,7 @@ public class NioClient {
 				break;
 			}
 			selector.select();
-			Iterator<SelectionKey> ite = this.selector.selectedKeys()
-					.iterator();
+			Iterator<SelectionKey> ite = this.selector.selectedKeys().iterator();
 			while (ite.hasNext()) {
 				SelectionKey key = ite.next();
 				ite.remove();
@@ -54,8 +53,7 @@ public class NioClient {
 			channel.finishConnect();
 		}
 		channel.configureBlocking(false);
-		channel.write(ByteBuffer.wrap(new String("hello server!\r\n")
-				.getBytes()));
+		channel.write(ByteBuffer.wrap(new String("hello server!\r\n").getBytes()));
 		channel.register(this.selector, SelectionKey.OP_READ);
 	}
 

@@ -16,8 +16,7 @@ import akka.event.LoggingAdapter;
  * 
  */
 public class MasterBird extends UntypedActor {
-	private final LoggingAdapter log = Logging.getLogger(getContext().system(),
-			this);
+	private final LoggingAdapter log = Logging.getLogger(getContext().system(), this);
 	private PsoValue gBest = null;
 
 	@Override
@@ -28,8 +27,7 @@ public class MasterBird extends UntypedActor {
 				// 更新全局最优，通知所有粒子
 				System.out.println(msg + "\n");
 				gBest = pBest;
-				ActorSelection selection = getContext().actorSelection(
-						"/user/bird_*");
+				ActorSelection selection = getContext().actorSelection("/user/bird_*");
 				selection.tell(new GBestMsg(gBest), getSelf());
 			}
 		} else {

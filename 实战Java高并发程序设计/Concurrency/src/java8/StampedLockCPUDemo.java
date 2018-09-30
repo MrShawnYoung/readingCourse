@@ -1,10 +1,10 @@
-package com.java8;
+package java8;
 
 import java.util.concurrent.locks.LockSupport;
 import java.util.concurrent.locks.StampedLock;
 
 /**
- * 小陷阱
+ * StampedLock的小陷阱
  * 
  * @author 杨弢
  * 

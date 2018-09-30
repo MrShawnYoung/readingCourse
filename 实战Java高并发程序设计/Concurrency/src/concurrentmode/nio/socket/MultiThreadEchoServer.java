@@ -29,8 +29,7 @@ public class MultiThreadEchoServer {
 			BufferedReader is = null;
 			PrintWriter os = null;
 			try {
-				is = new BufferedReader(new InputStreamReader(
-						clientSocket.getInputStream()));
+				is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 				os = new PrintWriter(clientSocket.getOutputStream(), true);
 				// 从InputStream当中读取客户端锁发送的数据
 				String inputLine = null;
@@ -69,8 +68,7 @@ public class MultiThreadEchoServer {
 		while (true) {
 			try {
 				clientSocket = echoServer.accept();
-				System.out.println(clientSocket.getRemoteSocketAddress()
-						+ " connect!");
+				System.out.println(clientSocket.getRemoteSocketAddress() + " connect!");
 				tp.execute(new HandleMsg(clientSocket));
 			} catch (Exception e) {
 				System.out.println(e);

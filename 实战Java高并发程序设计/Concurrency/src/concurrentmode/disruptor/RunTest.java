@@ -14,11 +14,9 @@ public class RunTest {
 		Executor executor = Executors.newCachedThreadPool();
 		PCDataFactory factory = new PCDataFactory();
 		int bufferSize = 1024;
-		Disruptor<PCData> disruptor = new Disruptor<PCData>(factory,
-				bufferSize, executor, ProducerType.MULTI,
+		Disruptor<PCData> disruptor = new Disruptor<PCData>(factory, bufferSize, executor, ProducerType.MULTI,
 				new BlockingWaitStrategy());
-		disruptor.handleEventsWithWorkerPool(new Consumer(), new Consumer(),
-				new Consumer(), new Consumer());
+		disruptor.handleEventsWithWorkerPool(new Consumer(), new Consumer(), new Consumer(), new Consumer());
 		disruptor.start();
 		RingBuffer<PCData> ringBuffer = disruptor.getRingBuffer();
 		Producer producer = new Producer(ringBuffer);

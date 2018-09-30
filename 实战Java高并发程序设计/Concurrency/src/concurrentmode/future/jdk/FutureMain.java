@@ -7,8 +7,7 @@ import java.util.concurrent.FutureTask;
 
 public class FutureMain {
 
-	public static void main(String[] args) throws InterruptedException,
-			ExecutionException {
+	public static void main(String[] args) throws InterruptedException, ExecutionException {
 		// 构造FutureTask
 		FutureTask<String> future = new FutureTask<String>(new RealData("a"));
 		ExecutorService executor = Executors.newFixedThreadPool(1);

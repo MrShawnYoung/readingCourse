@@ -25,12 +25,9 @@ import akka.actor.Props;
 public class AskMain {
 
 	public static void main(String[] args) throws Exception {
-		ActorSystem system = ActorSystem.create("askdemo",
-				ConfigFactory.load("samplehello.conf"));
-		ActorRef worker = system
-				.actorOf(Props.create(MyWorker.class), "worker");
-		ActorRef printer = system.actorOf(Props.create(Printer.class),
-				"printer");
+		ActorSystem system = ActorSystem.create("askdemo", ConfigFactory.load("samplehello.conf"));
+		ActorRef worker = system.actorOf(Props.create(MyWorker.class), "worker");
+		ActorRef printer = system.actorOf(Props.create(Printer.class), "printer");
 		system.actorOf(Props.create(WatchActor.class, worker), "watcher");
 
 		// 等待future返回

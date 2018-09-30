@@ -21,8 +21,7 @@ import akka.event.LoggingAdapter;
  * 
  */
 public class Bird extends UntypedActor {
-	private final LoggingAdapter log = Logging.getLogger(getContext().system(),
-			this);
+	private final LoggingAdapter log = Logging.getLogger(getContext().system(), this);
 	// 个体最优
 	private PsoValue pBest = null;
 	// 全局最优
@@ -68,8 +67,7 @@ public class Bird extends UntypedActor {
 		double newFit = Fitness.fitness(x);
 		pBest = new PsoValue(newFit, x);
 		PBestMsg pBestMsg = new PBestMsg(pBest);
-		ActorSelection selection = getContext().actorSelection(
-				"/user/masterbird");
+		ActorSelection selection = getContext().actorSelection("/user/masterbird");
 		selection.tell(pBestMsg, getSelf());
 	}
 
@@ -121,9 +119,8 @@ public class Bird extends UntypedActor {
 	}
 
 	public double updateVelocity(int i) {
-		double v = Math.random() * velocity.get(i) + 2 * Math.random()
-				* (pBest.getX().get(i) - x.get(i)) + 2 * Math.random()
-				* (gBest.getX().get(i) - x.get(i));
+		double v = Math.random() * velocity.get(i) + 2 * Math.random() * (pBest.getX().get(i) - x.get(i))
+				+ 2 * Math.random() * (gBest.getX().get(i) - x.get(i));
 		v = v > 0 ? Math.min(v, 5) : Math.max(v, -5);
 		velocity.set(i, v);
 		return v;

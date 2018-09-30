@@ -13,8 +13,7 @@ public class ThreadPoolDemo {
 	public static class MyTask implements Runnable {
 		@Override
 		public void run() {
-			System.out.println(System.currentTimeMillis() + ":Thread ID:"
-					+ Thread.currentThread().getId());
+			System.out.println(System.currentTimeMillis() + ":Thread ID:" + Thread.currentThread().getId());
 			try {
 				Thread.sleep(1000);
 			} catch (Exception e) {

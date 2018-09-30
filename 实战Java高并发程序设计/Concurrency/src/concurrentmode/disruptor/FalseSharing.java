@@ -24,8 +24,7 @@ public class FalseSharing implements Runnable {
 	public static void main(String[] args) throws Exception {
 		final long start = System.currentTimeMillis();
 		runTest();
-		System.out
-				.println("duration = " + (System.currentTimeMillis() - start));
+		System.out.println("duration = " + (System.currentTimeMillis() - start));
 	}
 
 	private static void runTest() throws InterruptedException {
