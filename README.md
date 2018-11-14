@@ -16,4 +16,4 @@ Spring Cloud微服务实战：代码和书中版本不一致，读者用的E版�
 
 深入理解Java虚拟机 JVM高级特性与最佳实践：建议使用1.6或1.7的JDK环境测试代码
 
-Java8实战：具体案例代码可以进入此地址https://github.com/java8/Java8InAction （只不过我有注释，他没有）
+Java8实战：具体案例代码可以进入此地址：https://github.com/java8/Java8InAction （只不过我有注释，他没有）
