@@ -14,7 +14,7 @@ Oracle查询优化改写技巧与案例：使用到的表为scott用户下的emp
 
 Spring Cloud微服务实战：代码和书中版本不一致，读者用的E版，结合书上代码查看修改，也可以上作者的GitHub地址仓库查看代码，ZipKin部分Mysql库自行切换
 
-深入理解Java虚拟机 JVM高级特性与最佳实践：建议使用1.6或1.7的JDK环境测试代码
+深入理解Java虚拟机 JVM高级特性与最佳实践（第2版）：建议使用1.6或1.7的JDK环境测试代码
 
 Java8实战：具体案例代码可以进入此地址：https://github.com/java8/Java8InAction （只不过我有注释，他没有）
 
